@@ -1,39 +1,41 @@
 <div id="st_studio_settings">
   <div class="inline-drawer">
-    <div class="inline-drawer-header">
-      <span>ST Studio</span>
-      <button
-        type="button"
-        class="inline-drawer-toggle inline-drawer-open"
-        data-drawer="st-studio-settings"
-        aria-expanded="true"
-      >
-        <i class="fa-solid fa-circle-chevron-down"></i>
-      </button>
+    <div class="inline-drawer-toggle inline-drawer-header">
+      <b>ST Studio</b>
+      <div
+        class="inline-drawer-icon fa-solid fa-circle-chevron-down down"
+      ></div>
     </div>
     <div class="inline-drawer-content">
-      <div>
-        <label>
-          <input id="st-studio-enabled" type="checkbox" />
-          Включено
-        </label>
-      </div>
+      <label class="checkbox_label" for="st-studio-enabled">
+        <input id="st-studio-enabled" type="checkbox" />
+        <span>Enabled</span>
+      </label>
 
-      <div>
-        <label for="st-studio-server-base">Server base URL (опционально)</label>
+      <div class="flex-container flexFlowColumn">
+        <label for="st-studio-server-base">
+          <span>Server base URL</span> <small>(optional)</small>
+        </label>
         <input
           id="st-studio-server-base"
+          class="text_pole"
           type="text"
           placeholder="http://127.0.0.1:8000"
         />
-        <div>
-          Если пусто — используется текущий origin.
-        </div>
+        <small>Leave empty to use the current origin.</small>
       </div>
 
-      <div>
-        <button id="st-studio-ping" type="button">Ping state</button>
-        <span id="st-studio-ping-result">-</span>
+      <div class="flex-container alignItemsCenter marginTop5">
+        <div
+          id="st-studio-ping"
+          class="menu_button menu_button_icon"
+          title="Ping ST Studio state endpoint"
+        >
+          <i class="fa-solid fa-signal"></i>
+          <span>Ping state</span>
+        </div>
+        <span class="flex1"></span>
+        <small>Result: <span id="st-studio-ping-result">-</span></small>
       </div>
     </div>
   </div>
