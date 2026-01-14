@@ -1,41 +1,41 @@
 # ST Studio
 
-Текущее состояние разработки (MVP: стейт‑хранилище + базовая UI‑панель).
+Current development status (MVP: state store + basic UI panel).
 
-## Что реализовано
+## Implemented
 
-### Серверный плагин (ST-Studio-Server)
+### Server plugin (ST-Studio-Server)
 
-- **Базовая архитектура**: модули `routes/`, `services/`, `utils/`, `constants`, `types`.
-- **Эндпоинты**:
+- **Base architecture**: modules `routes/`, `services/`, `utils/`, `constants`, `types`.
+- **Endpoints**:
   - `GET /api/plugins/st-studio/state?scope=global|chat|character|group&key=...`
-  - `POST /api/plugins/st-studio/state` с `{ scope, key?, expectedRevision?, state }`
-  - `GET /api/plugins/st-studio/events` — SSE‑заготовка (keepalive ping).
-- **Хранилище стейта**:
-  - путь `data/{user}/st-studio/state/...` (берётся из `request.user.directories.root`);
-  - версии стейта (`version`), миграция/нормализация;
-  - ревизии и конфликт по `expectedRevision` (409).
+  - `POST /api/plugins/st-studio/state` with `{ scope, key?, expectedRevision?, state }`
+  - `GET /api/plugins/st-studio/events` — SSE stub (keepalive ping).
+- **State storage**:
+  - path `data/{user}/st-studio/state/...` (derived from `request.user.directories.root`);
+  - state versions (`version`), migration/normalization;
+  - revisions and conflict on `expectedRevision` (409).
 
-### Клиентское расширение (ST-Studio)
+### Client extension (ST-Studio)
 
-- **Панель настроек** в стандартном стиле ST:
-  - включение/выключение;
-  - `serverBase` (опционально, по умолчанию текущий origin);
-  - кнопка **Ping state**.
-- **Пинг сервера**:
-  - запрос `GET /api/plugins/st-studio/state?scope=global`;
-  - лог ответа в консоль;
-  - отображение статуса (HTTP‑код) рядом с кнопкой.
-- **Автопинг** при `APP_READY`, если расширение включено.
+- **Settings panel** in the standard SillyTavern style:
+  - enable/disable;
+  - `serverBase` (optional, defaults to current origin);
+  - **Ping state** button.
+- **Server ping**:
+  - request `GET /api/plugins/st-studio/state?scope=global`;
+  - logs response to console;
+  - shows status (HTTP code) next to the button.
+- **Auto-ping** on `APP_READY` if the extension is enabled.
 
-## Что НЕ реализовано
+## Not implemented
 
-- Multi‑agent / оркестрация.
-- UI‑граф/воркфлоу.
-- Patch‑эндпоинт и отдельные health/diagnostics.
+- Multi-agent / orchestration.
+- UI graph / workflow.
+- Patch endpoint and separate health/diagnostics.
 
-## Как проверить
+## How to test
 
-1. Убедиться, что server‑plugin включён в `config.yaml` (`enableServerPlugins: true`).
-2. Открыть настройки расширений → ST Studio.
-3. Нажать **Ping state** и проверить лог в консоли.
+1. Make sure the server plugin is enabled in `config.yaml` (`enableServerPlugins: true`).
+2. Open Extensions settings → ST Studio.
+3. Click **Ping state** and check the console log.
