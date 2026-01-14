@@ -1,1 +1,36 @@
+/* ST Studio topbar panel */
+#st-studio-panel {
+  width: min(70vw, 900px);
+  max-width: 900px;
+}
+
+.st-studio-muted {
+  opacity: 0.7;
+  font-size: calc(var(--mainFontSize) * 0.9);
+}
+
+.st-studio-empty {
+  opacity: 0.8;
+  padding: 10px;
+  border: 1px dashed var(--SmartThemeBorderColor);
+  border-radius: 10px;
+  background: var(--black30a);
+}
+
+.st-studio-processor {
+  border: 1px solid var(--SmartThemeBorderColor);
+  border-radius: 10px;
+  padding: 10px;
+  background: var(--black30a);
+}
+
+.st-studio-label {
+  opacity: 0.8;
+}
+
+.st-studio-processor textarea.st-studio-processor-prompt {
+  width: 100%;
+  resize: vertical;
+}
+
 /* Default styling only */

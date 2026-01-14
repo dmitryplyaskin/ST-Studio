@@ -27,6 +27,9 @@ Current development status (MVP: state store + basic UI panel).
   - logs response to console;
   - shows status (HTTP code) next to the button.
 - **Auto-ping** on `APP_READY` if the extension is enabled.
+- **Topbar panel**:
+  - adds a new ST Studio icon to the top settings bar;
+  - allows adding/removing processor blocks (currently: Post-processing) with a prompt textarea.
 
 ## Not implemented
 
