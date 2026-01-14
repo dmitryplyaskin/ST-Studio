@@ -1,33 +1,41 @@
-# SillyTavern Extension Example
+# ST Studio
 
-*Provide a brief description of how your extension works, what problem it aims to solve.*
+Текущее состояние разработки (MVP: стейт‑хранилище + базовая UI‑панель).
 
-## Features
+## Что реализовано
 
-*Describe some of the main selling points of your extension.*
+### Серверный плагин (ST-Studio-Server)
 
-## Installation and Usage
+- **Базовая архитектура**: модули `routes/`, `services/`, `utils/`, `constants`, `types`.
+- **Эндпоинты**:
+  - `GET /api/plugins/st-studio/state?scope=global|chat|character|group&key=...`
+  - `POST /api/plugins/st-studio/state` с `{ scope, key?, expectedRevision?, state }`
+  - `GET /api/plugins/st-studio/events` — SSE‑заготовка (keepalive ping).
+- **Хранилище стейта**:
+  - путь `data/{user}/st-studio/state/...` (берётся из `request.user.directories.root`);
+  - версии стейта (`version`), миграция/нормализация;
+  - ревизии и конфликт по `expectedRevision` (409).
 
-### Installation
+### Клиентское расширение (ST-Studio)
 
-*In most cases, this should just be using ST's inbuilt extension installer.* 
+- **Панель настроек** в стандартном стиле ST:
+  - включение/выключение;
+  - `serverBase` (опционально, по умолчанию текущий origin);
+  - кнопка **Ping state**.
+- **Пинг сервера**:
+  - запрос `GET /api/plugins/st-studio/state?scope=global`;
+  - лог ответа в консоль;
+  - отображение статуса (HTTP‑код) рядом с кнопкой.
+- **Автопинг** при `APP_READY`, если расширение включено.
 
-### Usage
+## Что НЕ реализовано
 
-*Explain how to use this extension.*
+- Multi‑agent / оркестрация.
+- UI‑граф/воркфлоу.
+- Patch‑эндпоинт и отдельные health/diagnostics.
 
-## Prerequisites
+## Как проверить
 
-*Specify the version of ST necessary here.*
-
-## Support and Contributions
-
-*Where should someone ask for support?*
-
-*Consider including your own contact info for help/questions.*
-
-*How can people help add to this extension?*
-
-## License
-
-*Be cool, use an open source license.*
+1. Убедиться, что server‑plugin включён в `config.yaml` (`enableServerPlugins: true`).
+2. Открыть настройки расширений → ST Studio.
+3. Нажать **Ping state** и проверить лог в консоли.

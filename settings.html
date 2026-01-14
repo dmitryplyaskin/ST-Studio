@@ -1,0 +1,40 @@
+<div id="st_studio_settings">
+  <div class="inline-drawer">
+    <div class="inline-drawer-header">
+      <span>ST Studio</span>
+      <button
+        type="button"
+        class="inline-drawer-toggle inline-drawer-open"
+        data-drawer="st-studio-settings"
+        aria-expanded="true"
+      >
+        <i class="fa-solid fa-circle-chevron-down"></i>
+      </button>
+    </div>
+    <div class="inline-drawer-content">
+      <div>
+        <label>
+          <input id="st-studio-enabled" type="checkbox" />
+          Включено
+        </label>
+      </div>
+
+      <div>
+        <label for="st-studio-server-base">Server base URL (опционально)</label>
+        <input
+          id="st-studio-server-base"
+          type="text"
+          placeholder="http://127.0.0.1:8000"
+        />
+        <div>
+          Если пусто — используется текущий origin.
+        </div>
+      </div>
+
+      <div>
+        <button id="st-studio-ping" type="button">Ping state</button>
+        <span id="st-studio-ping-result">-</span>
+      </div>
+    </div>
+  </div>
+</div>

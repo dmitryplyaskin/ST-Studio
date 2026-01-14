@@ -1,11 +1,11 @@
 {
-    "display_name": "Name Displayed in SillyTavern",
+    "display_name": "ST Studio",
     "loading_order": 9,
     "requires": [],
     "optional": [],
     "js": "index.js",
     "css": "style.css",
-    "author": "yourNameHere",
-    "version": "1.0.0",
-    "homePage": "yourUrlHere"
+    "author": "Dmitry Plyaskin",
+    "version": "0.0.1",
+    "homePage": "https://github.com/dmitryplyaskin/ST-Studio-Server"
 }
